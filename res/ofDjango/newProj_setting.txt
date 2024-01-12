@@ -1,0 +1,69 @@
+(не забудь добавить точку . в конце):
+command-line
+(myvenv) ~/djangogirls$ django-admin startproject mysite .
+Точка . крайне важна, потому что говорит скрипту установить Django в вашем текущем каталоге (который и обозначается сокращённо точкой .)
+
+
+
+
+Изменяем настройки
+Давай внесём изменения в mysite/settings.py. Открой файл в текстовом редакторе, который ты выбрала ранее.
+Примечание: помни, что settings.py — самый обычный файл. Ты можешь открыть его из своего редактора кода, используя меню «Файл -> Открыть». При этом ты увидишь обычное окно, в котором ты можешь перейти к своему файлу settings.py и выбрать его. Либо ты можешь открыть этот файл, перейдя в директорию проекта djangogirls на твоём рабочем столе и щёлкнув по нему правой кнопкой мыши; затем выбери свой редактор кода из предложенного списка. Важно выбрать именно редактор, поскольку у тебя могут быть установлены программы, которые откроют наш файл, но не позволят его изменить.
+
+Было бы неплохо установить корректный часовой пояс на нашем сайте. Перейди к списку часовых поясов википедии и скопируй название своего часового пояса (TZ) (например, Europe/Moscow).
+
+В файле settings.py найди строку, содержащую TIME_ZONE, и измени её в соответствии со своим часовым поясом:
+
+mysite/settings.py
+TIME_ZONE = 'Europe/Moscow'
+Код языка состоит из сокращённого названия языка, например en для английского или ru для русского, и кода страны, например, ru для России или ch для Швейцарии. Тебе понадобится эта настройка, если ты хочешь, чтобы все встроенные кнопки и уведомления от Django были на твоём языке. Таким образом, надпись на кнопке «Cancel» будет переведена на заданный тобой язык. Django поставляется с большим набором готовых переводов.
+
+Измени язык, отредактировав следующую строку:
+
+mysite/settings.py
+LANGUAGE_CODE = 'ru-ru'
+Нам также необходимо добавить в настройки информацию о расположении статических файлов (мы познакомимся со статическими файлами и CSS в следующих главах). Спустись в конец файла и после переменной STATIC_URL добавь новую — STATIC_ROOT:
+
+mysite/settings.py
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+Когда наcтройка DEBUG имеет значение True, а настройка ALLOWED_HOSTS пуста, имя хост твоего веб-сайта сверяется со списком ['localhost', '127.0.0.1', '[::1]']. Ни одно из значений не будет соответствовать имени хоста на PythonAnywhere при публикации нашего приложения, поэтому нам необходимо изменить следующую настройку:
+
+mysite/settings.py
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+Примечание: В случае если вы используете Chromebook, добавьте следующую строку в конец файла settings.py: MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+Настройка базы данных
+Существует множество различных баз данных, которые могут хранить данные для твоего сайта. Мы будем использовать стандартную — sqlite3.
+
+Она уже выбрана по умолчанию в файле mysite/settings.py:
+
+mysite/settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+Чтобы создать базу данных для нашего блога, набери в командной строке следующее: python manage.py migrate (мы должны быть в директории djangogirls, где расположен файл manage.py). Если всё прошло успешно, то ты увидишь следующий результат:
+
+command-line
+(myvenv) ~/djangogirls$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: auth, admin, contenttypes, sessions
+Running migrations:
+  Rendering model states... DONE
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying sessions.0001_initial... OK
+Вот и всё! Пришло время запустить веб-сервер и посмотреть, работает ли наш веб-сайт!
+

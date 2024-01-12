@@ -1,0 +1,10 @@
+запустить source myvenv/bin/activate
+(myvenv) ~/djangogirls$ python manage.py runserver 0:8000
+browser    http://127.0.0.1:8000/
+
+при изменении модели
+python manage.py makemigrations rean
+python manage.py migrate rean
+python manage.py runserver 0:8000
+
+

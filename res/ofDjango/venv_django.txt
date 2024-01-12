@@ -1,0 +1,45 @@
+Виртуальное окружение   
+создать     python3 -m venv myvenv
+запустить source myvenv/bin/activate
+
+Итак, давай создадим виртуальное окружение (оно также называется virtualenv). Virtualenv будет изолировать настройки Python/Django для каждого отдельного проекта. Это значит, что изменения одного сайта не затронут другие сайты, которые ты разрабатываешь. Удобно, правда?
+Виртуальное окружение: Linux и OS X
+В Linux и OS X достаточно набрать python3 -m venv myvenv, чтобы создать virtualenv:
+command-line
+$ python3 -m venv myvenv
+myvenv — имя виртуального окружения virtualenv. Можешь выбрать другое имя, но используй только строчные буквы и никаких пробелов.
+Работаем с virtualenv: Linux и OS X
+Запусти виртуальное окружение, выполнив:
+command-line
+$ source myvenv/bin/activate
+
+
+Установка Django
+(myvenv) ~$ python3 -m pip install --upgrade pip
+djangogirls/requirements.txt        запись в requirements.txt Django~=3.2.10
+(myvenv) ~$ pip install -r requirements.txt
+
+После запуска virtualenv ты можешь установить Django.
+Перед этим мы должны удостовериться, что у тебя установлена последняя версия pip — программы, которую мы используем для установки Django.
+command-line
+(myvenv) ~$ python3 -m pip install --upgrade pip
+Установка библиотек через указание требований
+Файл с требованиями (requirements) хранит список зависимостей, которые нужно установить с помощью pip install:
+Для начала создай файл requirements.txt внутри директории djangogirls/, используя текстовый редактор, который ты установила ранее. Просто создай в редакторе новый файл, а затем сохрани его под именем requirements.txt в директории djangogirls/. После этого твоя директория будет выглядеть так:
+djangogirls
+└───requirements.txt
+В файл djangogirls/requirements.txt нужно добавить такой текст:
+djangogirls/requirements.txt
+Django~=3.2.10
+Теперь выполни команду pip install -r requirements.txt, чтобы установить Django.
+command-line
+(myvenv) ~$ pip install -r requirements.txt
+Collecting Django~=3.2.10 (from -r requirements.txt (line 1))
+  Downloading Django-3.2.10-py3-none-any.whl (7.1MB)
+Installing collected packages: Django
+Successfully installed Django-3.2.10
+command-line
+C:\Users\Name\djangogirls> python -m pip install -r requirements.txt
+Установка Django: Linux
+При возникновении ошибки при вызове pip под Ubuntu 12.04, пожалуйста, запусти `python -m pip install -U --force-reinstall pip`, чтобы исправить установку pip в virtualenv.
+
