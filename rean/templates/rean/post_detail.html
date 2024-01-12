@@ -1,0 +1,26 @@
+{% extends 'rean/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if title_dif != '' %}
+            <div class="post_dif">
+                <p>{{ post.title_dif }} {{ post.title_file }}</p>
+            </div>
+        {% endif %}
+        
+        {% if title_dif != '' %}
+            <div class="post_dif">
+                <p>{{ post.title_dif }} {{ post.title_file }}</p>
+            </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <h1>{{ post.title_ru }}</h1>
+        <h1>{{ post.title_th }}</h1>
+        <h1>{{ post.title_is }}</h1>
+        <h1>{{ post.text_note|linebreaksbr }}</h1>
+        <h1>{{ post.text_ph|linebreaksbr }}</h1>
+        <h1>{{ post.text_ex|linebreaksbr }}</h1>
+    </div>
+{% endblock %} 

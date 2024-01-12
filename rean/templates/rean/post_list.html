@@ -1,0 +1,12 @@
+{% extends 'rean/base.html' %}
+
+{% block content %}
+    <h1 class="filtre">{{ cod }}</h1>
+    {% for post in posts %}
+        <div class="post">
+            <h1>
+            <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title_ru }}</a>
+            </h1>
+        </div>
+    {% endfor %}
+{% endblock %}

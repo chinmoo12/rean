@@ -1,0 +1,49 @@
+{% load static %}
+<html>
+
+    <head>
+        <title>rean</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/rean.css' %}">
+    </head>
+    
+    <body>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+        <h1>
+                <a href="/">REAN</a>
+                <a href="{% url 'post_ch' %}" class="btn-group" role="group" role="button" aria-label="">
+                <button type="button" class="btn btn-default">Left</button>
+                <button type="button" class="btn btn-default">Middle</button>
+                <button type="button" class="btn btn-default">Right</button></a>
+                
+        
+        <form>
+        <div class="form-check">
+            <a href="{% url 'post_ch' %}" input class="form-check-input" type="checkbox" value="" id="flexCheck">
+            <label class="form-check-label" for="flexCheck">Default</label></a>
+        
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <a href="{% url 'post_ch' %}" label class="form-check-label" for="flexCheckDefault">Default checkbox</label></a>
+        </div>
+        </form>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+            <label class="form-check-label" for="flexCheckChecked">Checked checkbox</label>
+        </div>
+        </h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

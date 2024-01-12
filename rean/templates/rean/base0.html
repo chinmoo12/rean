@@ -1,0 +1,52 @@
+{% load static %}
+<html>
+
+    <head>
+        <title>rean</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/rean.css' %}">
+    </head>
+    
+    <body>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+            <h1>
+                <a href="/">REAN</a>
+                
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">Checked checkbox</label>
+            </div>
+                
+                
+                <form method="POST" action="/">
+                    {% csrf_token %}
+                    <a href="{% url 'post_new' %}" ><input type="checkbox" id="dif1" name="dif1" value="learn">
+                    <label for="dif1"> lw</label></a>
+                    <input type="checkbox" id="dif2" name="dif2" value="easy">
+                    <label for="dif2"> ew</label>
+                    <input type="checkbox" id="dif3" name="dif3" value="midle">
+                    <label for="dif3"> mw</label>
+                    <input type="checkbox" id="dif4" name="dif4" value="dificalt">
+                    <label for="dif4"> dw</label>
+                    </form>
+            </h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

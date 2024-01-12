@@ -1,0 +1,41 @@
+{% load static %}
+<html>
+
+    <head>
+        <title>rean</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Loma&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/rean.css' %}">
+    </head>
+    
+    <body>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+        <h1>
+            <a href="/">REAN</a>
+            </h1>
+            <!--<p class="btn-group" role="group" role="button" aria-label="">-->
+            <a href="{% url 'post_a' %}" button type="button" class="btn">all</button></a>
+            <a href="{% url 'post_w' %}" button type="button" class="btn">words</button></a>
+            <a href="{% url 'post_p' %}" button type="button" class="btn">phrases</button></a>
+            <a href="{% url 'post_l' %}" button type="button" class="btn">learn</button></a>
+            <a href="{% url 'post_e' %}" button type="button" class="btn">easy</button></a>
+            <a href="{% url 'post_m' %}" button type="button" class="btn">midle</button></a>
+            <a href="{% url 'post_d' %}" button type="button" class="btn">difficult</button></a>
+            <!--<button type="submit"> -->
+            <a href="{% url 'post_start' %}" button type="submit" class="btn btn-success">START</button></a>
+        </div>
+        
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

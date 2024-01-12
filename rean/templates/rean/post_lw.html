@@ -1,0 +1,9 @@
+{% extends 'rean/base.html' %}
+
+{% block content %}
+    <h1>ch post</h1>
+    <form method="POST" class="btn-group">{% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">ch</button>
+    </form>
+{% endblock %}  
